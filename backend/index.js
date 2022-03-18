@@ -1,13 +1,13 @@
 import app from "./server.js"
-import mondodb, { MongoClient } from "mongodb"
+import mongodb from "mongodb"
 import dotenv from "dotenv"
 dotenv.config()
-const MongoClient = mongodb.MongoClient
+const MongoClient = mongodb.MongoClient;
 
 const port = process.env.PORT || 8000
 
 //Connects to MongoDB Database
-MongoClient.connect(process.env.INTERNTRACKER_DB_URI,
+MongoClient.connect(process.env.INTERNTRACKER_DB_URL,
 {
     poolSize: 5,
     wtimeout: 2500,
