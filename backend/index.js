@@ -7,11 +7,11 @@ const MongoClient = mongodb.MongoClient;
 const port = process.env.PORT || 8000
 
 //Connects to MongoDB Database
-MongoClient.connect(process.env.INTERNTRACKER_DB_URL,
+MongoClient.connect(process.env.INTERNTRACKER_DB_URI,
 {
-    poolSize: 5,
-    wtimeout: 2500,
-    useNewUrlParse: true
+    maxPoolSize: 5,
+    wtimeoutMS: 2500,
+    useNewUrlParser: true
 
 })
 .catch(err => {
