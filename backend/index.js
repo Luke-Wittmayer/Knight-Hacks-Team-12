@@ -7,7 +7,7 @@ const MongoClient = mongodb.MongoClient;
 const port = process.env.PORT || 8000
 
 //Connects to MongoDB Database
-MongoClient.connect(process.env.INTERNTRACKER_DB_URI,
+MongoClient.connect(process.env.INTERNTRACKER_DB_URL,
 {
     maxPoolSize: 5,
     wtimeoutMS: 2500,
@@ -19,7 +19,6 @@ MongoClient.connect(process.env.INTERNTRACKER_DB_URI,
     process.exit(1)
 })
 .then(async client => {
-    await recipesDAO.injectDB(client)
     app.listen(port, () => {
         console.log(`listening to port ${port}`)
     })
