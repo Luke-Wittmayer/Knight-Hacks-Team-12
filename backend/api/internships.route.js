@@ -6,7 +6,7 @@ const router = express.Router()
 router.route("/").get((req,res) => res.send("hello world"))
 
 // Route to sign up. Possibly change to a POST request.
-router.route("/signup").get(UserAuth.signUp);
+router.route("/signup").post(UserAuth.signUp);
 
 // Route to log in
 router.route("/login").get(UserAuth.logIn);

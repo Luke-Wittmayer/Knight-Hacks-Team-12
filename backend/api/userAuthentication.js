@@ -6,8 +6,8 @@ export default class UserAuthentication {
 
     static async signUp(req, res, next) {
         console.log("I'm in UserAuthentication class")
-        const username = req.query.username ? req.query.username : null;
-        const password = req.query.password ? req.query.password : null;
+        const username = req.body.username ? req.body.username : null;
+        const password = req.body.password ? req.body.password : null;
 
         if (username != null && password != null) {
             console.log("I'm in the UserAthentication if statement")
