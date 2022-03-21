@@ -20,10 +20,21 @@ export default class internshipsDAO {
     }
 
     static async addUser(user, psw) {
-        let account = {username : user, password : psw};
+        /*let account = {username : user, password : psw};
         database.insertOne(account, (err, res) => {
             if (err) throw err
             console.log('Successfully inserted account to database')
-        })
+        })*/
+        try{
+            const userInfo = {
+                username: user,
+                password: psw
+            }
+
+            return await database.insertOne(userInfo)
+        } catch(e){
+            console.error('Unable to add user: ${e}')
+            return {error: e}
+        }
     }
 }
