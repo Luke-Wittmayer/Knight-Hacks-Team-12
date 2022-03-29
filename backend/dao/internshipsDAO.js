@@ -37,4 +37,68 @@ export default class internshipsDAO {
             return {error: e}
         }
     }
+    
+    
+    static async addInternship(ID,name, date, email,description) {
+    // we take the input sent from internship controller and store it in internshipInfo below
+    try {
+      const internshipInfo = { 
+          Company: name,
+          Date: date,
+          Email: email,
+          Description: description,
+       }
+           
+       // Insert internshipInfo into our database
+      return await internships.updateOne(
+        { _id:ObjectId(ID) }, {$push:{Internships:internshipInfo}},
+      )
+    } catch (e) {
+      console.error(`Unable to add internship: ${e}`)
+      return { error: e }
+      }
+  }
+
+
+
+    static async updateInternship(userID,email,description,name,choice){  
+    /*Each of these if and else statements lets us know which part of the Internship
+      information we are updating. We can change Email , Description or Both.
+      depending on the choice we update the associated internship information sent from the
+      internships controller */
+    try{
+      
+        if(choice== "email"){
+        const updateResponse = await internships.updateOne(
+        { _id:ObjectId(userID),"Internships.Company":name}, {$set: {"Internships.$.Email":email}} 
+        )
+        return updateResponse}
+          
+        else if(choice=="description"){
+        const updateResponse = await internships.updateOne(
+        { _id:ObjectId(userID),"Internships.Company":name }, {$set:{"Internships.$.Description":description}}
+        )
+        return updateResponse}
+        
+
+        else if(choice=="both"){
+        const updateResponse = await internships.updateOne(
+        { _id:ObjectId(userID),"Internships.Company":name }, {$set:{"Internships.$.Description":description,"Internships.$.Email":email}}
+        )
+        return updateResponse}
+
+        else
+        {
+          console.error('Unable to edit Internship: ${e}')
+            return {error: e}
+        }
+    
+    } catch(e){
+      console.error(`Unable to update internship: ${e}`)
+      return { error: e }
+    }
+
+    
+  }
+    
 }
