@@ -98,9 +98,25 @@ export default class internshipsDAO {
     } catch(e){
       console.error(`Unable to update internship: ${e}`)
       return { error: e }
-    }
+      }
 
+    }
     
-  }
+    
+    static async deleteInternship(ID,Company){
+     try {
+       return await database.updateOne(
+        { _id:ObjectId(ID)},
+        { $pull: { Internships: { Company: Company } } }
+       )
+       
+     } catch (e) {
+      console.error(`Unable to delete internship: ${e}`)
+      return { error: e }
+       
+      }
+   }
+    
+    
     
 }
