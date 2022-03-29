@@ -1,6 +1,6 @@
 import express from "express"
 import UserAuth from "./userAuthentication.js"
-import internship from "./internships.controller.js"
+import InternshipController from "./internships.controller.js"
 
 const router = express.Router()
 
