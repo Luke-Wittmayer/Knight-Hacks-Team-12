@@ -3,7 +3,15 @@ import UserAuth from "./userAuthentication.js"
 
 const router = express.Router()
 
-router.route("/").get((req,res) => res.send("hello world"))
+//replaced Helloworld 
+router
+.route("/")
+.post(InternshipController.apiPostInternship)
+.put(InternshipController.apiUpdateInternship)
+/*still working on these two.
+.delete(InternshipCtrl.apiDeleteInternship)
+.get(InternshipCtrl.apiGetInternships)
+*/
 
 // Route to sign up. Possibly change to a POST request.
 router.route("/signup").post(UserAuth.signUp);
