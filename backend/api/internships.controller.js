@@ -65,6 +65,32 @@ export default class InternshipController{
         res.status(500).json({ error: e.message })
         }
       }
+    
+    
+    
+    static async apiDeleteInternship(req,res,next){
+        
+        try {
+
+          const userID = req.body.id
+          const name = req.body.text
+
+          if(userID==null||name==null)
+          res.json({invalid : "Please enter userID and Company Name"})
+
+          const deleteResponse = await internshipsDAO.deleteInternship(userID,name)
+
+
+          var { error } = deleteResponse
+          if (error) {
+          res.status(400).json({ error })
+          }
+          res.json({ status: "success" }) 
+        } catch (e) {
+          res.status(500).json({error: e.message})
+          }
+
+      }
 
 
 
