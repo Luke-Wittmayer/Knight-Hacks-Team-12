@@ -14,9 +14,9 @@ const router = express.Router()
 .get(InternshipCtrl.apiGetInternships)
 */
 
-router.route("/addInternship").post(internship.apiPostInternship);
+router.route("/addInternship").post(InternshipController.apiPostInternship);
 
-router.route("/editInternship").put(internship.apiUpdateInternship);
+router.route("/editInternship").put(InternshipController.apiUpdateInternship);
 
 // Route to sign up. Possibly change to a POST request.
 router.route("/signup").post(UserAuth.signUp);
