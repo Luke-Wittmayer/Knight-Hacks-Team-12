@@ -50,7 +50,7 @@ export default class internshipsDAO {
        }
            
        // Insert internshipInfo into our database
-      return await internships.updateOne(
+      return await database.updateOne(
         { _id:ObjectId(ID) }, {$push:{Internships:internshipInfo}},
       )
     } catch (e) {
@@ -69,20 +69,20 @@ export default class internshipsDAO {
     try{
       
         if(choice== "email"){
-        const updateResponse = await internships.updateOne(
+        const updateResponse = await database.updateOne(
         { _id:ObjectId(userID),"Internships.Company":name}, {$set: {"Internships.$.Email":email}} 
         )
         return updateResponse}
           
         else if(choice=="description"){
-        const updateResponse = await internships.updateOne(
+        const updateResponse = await database.updateOne(
         { _id:ObjectId(userID),"Internships.Company":name }, {$set:{"Internships.$.Description":description}}
         )
         return updateResponse}
         
 
         else if(choice=="both"){
-        const updateResponse = await internships.updateOne(
+        const updateResponse = await database.updateOne(
         { _id:ObjectId(userID),"Internships.Company":name }, {$set:{"Internships.$.Description":description,"Internships.$.Email":email}}
         )
         return updateResponse}
