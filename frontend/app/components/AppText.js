@@ -1,9 +1,12 @@
 import React from 'react';
-import { Text, StyleSheet, Platform } from 'react-native';
+import { Text } from 'react-native';
 
+import defaultStyles from '../config/styles';
+
+//for using dynamic default text that changes per platform
 function AppText({children}) {
     return (
-        <Text style={styles.text}>{children}</Text>
+        <Text style={defaultStyles.text}>{children}</Text>
     );
 }
 
