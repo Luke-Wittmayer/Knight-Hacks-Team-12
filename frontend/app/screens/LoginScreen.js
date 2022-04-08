@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Image } from 'react-native';
+import { Formik } from 'formik';
 
 import Screen from '../components/Screen';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
 
 function LoginScreen(props) {
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-
     return (
         <Screen style={styles.container}>
             <Image style={styles.logo} source={require("../assets/logo.png")}/>
-            <AppTextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="account"
-                //keyboardType="email-address"
-                onChangeText={text => setUsername(text)}
-                placeholder="Username"
-                textContentType="username"
-            />
-            <AppTextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                icon="lock"
-                onChangeText={text => setPassword(text)}
-                placeholder="Password"
-                secureTextEntry
-                textContentType="password"
-            />
-            <AppButton title="Login" onPress={() => console.log(username, password)}/>
+
+            <Formik
+                initialValues={{ username: '', password: ''}}
+                onSubmit={values => console.log(values)}
+            >
+                { ({ handleChange, handleSubmit}) => (
+                    <>
+                        <AppTextInput
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            icon="account"
+                            //keyboardType="email-address"
+                            onChangeText={handleChange("username")}
+                            placeholder="Username"
+                            textContentType="username"
+                        />
+                        <AppTextInput
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            icon="lock"
+                            onChangeText={handleChange("password")}
+                            placeholder="Password"
+                            secureTextEntry
+                            textContentType="password"
+                        />
+                        <AppButton title="Login" onPress={handleSubmit}/>              
+                    </>
+                )}
+            </Formik>
         </Screen>
     );
 }
