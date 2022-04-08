@@ -12,7 +12,7 @@ function ErrorMessage({ error }) {
 }
 
 const styles = StyleSheet.create({
-    error: { color: '#fc5c65'}
+    error: { color: 'red'}
 })
 
 export default ErrorMessage;
