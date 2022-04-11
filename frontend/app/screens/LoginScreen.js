@@ -7,6 +7,7 @@ import AppButton from '../components/AppButton';
 import AppTextInput from '../components/AppTextInput';
 import ErrorMessage from '../components/ErrorMessage';
 import Screen from '../components/Screen';
+import AppFormField from '../components/AppFormField';
 
 const validationSchema = Yup.object().shape({
     username: Yup.string().required().label("Username"),
@@ -25,28 +26,24 @@ function LoginScreen(props) {
             >
                 { ({ handleChange, handleSubmit, errors, setFieldTouched, touched}) => (
                     <>
-                        <AppTextInput
+                        <AppFormField
                             autoCapitalize="none"
                             autoCorrect={false}
                             icon="account"
                             //keyboardType="email-address"
-                            onBlur={()=> setFieldTouched("username")}
-                            onChangeText={handleChange("username")}
+                            name="username"
                             placeholder="Username"
                             textContentType="username"
                         />
-                        <ErrorMessage error={errors.username} visible={touched.username}/>
-                        <AppTextInput
+                        <AppFormField
                             autoCapitalize="none"
                             autoCorrect={false}
                             icon="lock"
-                            onBlur={()=> setFieldTouched("password")}
-                            onChangeText={handleChange("password")}
+                            name="password"
                             placeholder="Password"
                             secureTextEntry
                             textContentType="password"
                         />
-                        <ErrorMessage error={errors.password} visible={touched.password}/>
                         <AppButton title="Login" onPress={handleSubmit}/>              
                     </>
                 )}
