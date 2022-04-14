@@ -29,8 +29,8 @@ export default class UserAuthentication {
 
     static async logIn(req, res, next) {
         console.log("I'm in the log in method")
-        const username = req.query.username ? req.query.username : null;
-        const password = req.query.password ? req.query.password : null;
+        const username = req.body.username ? req.body.username : null;
+        const password = req.body.password ? req.body.password : null;
 
         if(username != null && password != null){
             const user = await internshipsDao.getUser(username)
