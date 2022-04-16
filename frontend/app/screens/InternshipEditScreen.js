@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
+import StatusPickerItem from "../components/StatusPickerItem";
 
 import {
     AppForm,
@@ -19,10 +20,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const statuses = [
-    { label: "Applied", value: 1},
-    { label: "Interview", value: 2},
-    { label: "Denied", value: 3},
-    { label: "Accepted", value: 4},
+    { label: "Applied", value: 1, backgroundColor: 'red'},
+    { label: "Interview", value: 2, backgroundColor: 'green'},
+    { label: "Denied", value: 3, backgroundColor: 'blue'},
+    { label: "Accepted", value: 4, backgroundColor: 'purple'},
 ];
 
 function InternshipEditScreen(props) {
@@ -48,7 +49,14 @@ function InternshipEditScreen(props) {
                     placeholder="Email"
                     textContentType="emailAddress"
                 />
-                <AppFormPicker items={statuses} name="Status" placeholder="Status" />
+                <AppFormPicker 
+                    items={statuses} 
+                    name="Status" 
+                    numberOfColumns={2}
+                    PickerItemComponent={StatusPickerItem}
+                    placeholder="Status" 
+                    width="50%" 
+                />
                 <AppFormField
                     maxLength={255}
                     multiline
