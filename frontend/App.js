@@ -8,6 +8,8 @@ import Screen from './app/components/Screen';
 
 import AuthNavigator from './app/navigation/AuthNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
+import InternshipEditScreen from './app/screens/InternshipEditScreen';
+import LoginScreen from './app/screens/LoginScreen';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
@@ -19,7 +21,7 @@ const StackNavigator = () => (
 export default function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      <InternshipEditScreen/>
     </NavigationContainer>
   );
 }
