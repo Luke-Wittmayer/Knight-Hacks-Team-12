@@ -48,7 +48,7 @@ function InternshipEditScreen(props) {
                     placeholder="Email"
                     textContentType="emailAddress"
                 />
-
+                <AppFormPicker items={statuses} name="Status" placeholder="Status" />
                 <AppFormField
                     maxLength={255}
                     multiline
