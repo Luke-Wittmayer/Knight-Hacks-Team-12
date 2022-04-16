@@ -64,7 +64,7 @@ function InternshipEditScreen(props) {
                     numberOfLines={3}
                     placeholder="Description"
                 />
-                <SubmitButton title="Add" />          
+                <SubmitButton title="Submit" />          
             </AppForm>
         </Screen>
     );
