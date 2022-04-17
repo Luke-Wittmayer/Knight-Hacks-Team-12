@@ -14,7 +14,7 @@ import Screen from "../components/Screen";
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().min(1).label("Name"),
     email: Yup.string().email().label("Email"),
-    date: Yup.date().required().label("Date"),
+    date: Yup.date().required().typeError('A valid date is required').label("Date"),
     description: Yup.string().label("Description"),
     status: Yup.object().required().nullable().label("Status")
 });
@@ -48,6 +48,11 @@ function InternshipEditScreen(props) {
                     name="email"
                     placeholder="Email"
                     textContentType="emailAddress"
+                />
+                <AppFormField
+                    name="date"
+                    placeholder="Date"
+                    width="50%"
                 />
                 <AppFormPicker 
                     items={statuses} 
