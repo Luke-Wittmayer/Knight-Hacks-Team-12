@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
-import StatusPickerItem from "../components/StatusPickerItem";
 
 import {
     AppForm,
@@ -9,6 +8,7 @@ import {
     AppFormPicker,
     SubmitButton,
 } from "../components/forms";
+import StatusPickerItem from "../components/StatusPickerItem";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
@@ -20,10 +20,10 @@ const validationSchema = Yup.object().shape({
 });
 
 const statuses = [
-    { label: "Applied", value: 1, backgroundColor: 'red'},
-    { label: "Interview", value: 2, backgroundColor: 'green'},
-    { label: "Denied", value: 3, backgroundColor: 'blue'},
-    { label: "Accepted", value: 4, backgroundColor: 'purple'},
+    { label: "Applied", value: 1, backgroundColor: '#45aaf2', icon: "dots-horizontal"},
+    { label: "Interview", value: 2, backgroundColor: '#fed330', icon: "chat"},
+    { label: "Denied", value: 3, backgroundColor: '#fc5c65', icon: "close"},
+    { label: "Accepted", value: 4, backgroundColor: '#26de81', icon: "check"},
 ];
 
 function InternshipEditScreen(props) {
