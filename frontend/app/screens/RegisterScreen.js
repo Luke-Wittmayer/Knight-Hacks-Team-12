@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 import Screen from '../components/Screen';
 import {AppForm, AppFormField, SubmitButton} from '../components/forms';
@@ -12,12 +13,25 @@ const validationSchema = Yup.object().shape({
 })
 
 function RegisterScreen(props) {
+    function onSubmit(values){
+        axios.post("http://localhost:3000/api/v1/internships/signup",{
+            username: values.username,
+            password: values.password,
+        })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+    }
+
     return (
         <Screen style={styles.container}>
 
             <AppForm
                 initialValues={{ username: '', password: '', confirmPassword: '',}}
-                onSubmit={values => console.log(values)}
+                onSubmit ={onSubmit}
                 validationSchema={validationSchema}
             >
                 <AppFormField

@@ -102,21 +102,21 @@ router.route("/signup").post(async (req, res) => {
         const user = await internshipsDao.getUser(username)
 
         if(user != null){
-            res.json({invalid : "User already exists"})
-            return
-        }
+            return res.status(400).json({message : "User already exists"})
+         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
         internshipsDao.addUser(username, hashedPassword);
-        res.json({success : "Creating user"})
+        return res.status(200).json({message : "Creating user", id: user._id})
+
     } else{
         console.log("Im in the UserAuthentication else statement")
-        res.json({ error : "no query"})
+        return res.status(400).json({ message : "no query"})
     }
 })
 
 // Route to log in
-router.route("/login").get(async (req, res) => {
+router.route("/login").post(async (req, res) => {
     console.log("I'm in the log in method")
     const username = req.body.username ? req.body.username : null;
     const password = req.body.password ? req.body.password : null;
@@ -125,17 +125,14 @@ router.route("/login").get(async (req, res) => {
         const user = await internshipsDao.getUser(username)
 
         if(user == null){
-            res.json({invalid : "User does not exist"})
-            return
+            return res.status(400).json({message : "User does not exist"})
         }
 
         bcrypt.compare(password, user.password).then(isMatch => {
             if(isMatch){
-                res.json({success : "Login successful"})
-                return
+                return res.status(200).json({message : "Login successful", id: user._id})
             } else {
-                res.json({error : "Password Incorrect"})
-                return
+                return res.status(400).json({message : "Password Incorrect"})
             }
         })
     }
