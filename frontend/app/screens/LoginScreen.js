@@ -42,7 +42,7 @@ function LoginScreen(props) {
             };
             
             console.log(user.user)
-            console.log("It worked if you see this message and the username below);
+            console.log("It worked if you see this message and the username below");
             store = user.user
             console.log(store)
             
