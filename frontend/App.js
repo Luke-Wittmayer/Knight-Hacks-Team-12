@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, LogBox } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -8,6 +8,7 @@ import Screen from './app/components/Screen';
 
 import AuthNavigator from './app/navigation/AuthNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
+import AppNavigator from './app/navigation/AppNavigator';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
@@ -17,9 +18,12 @@ const StackNavigator = () => (
 );
 
 export default function App() {
+  LogBox.ignoreLogs([
+    "It appears that you are using old version of react-navigation library",
+  ]);
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }
