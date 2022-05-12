@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
 
 function RegisterScreen(props) {
     function onSubmit(values){
-        axios.post("http://localhost:3000/api/v1/internships/signup",{
+        axios.post("http://(IPADDRESSHERE):3000/api/v1/internships/signup",{
             username: values.username,
             password: values.password,
         })
