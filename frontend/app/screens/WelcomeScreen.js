@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     title:{
-        fontFamily: 'Courier',
+        fontFamily: 'Courier New',
         fontSize: 25,
         fontWeight: "600",
         paddingVertical: 20,

@@ -107,7 +107,7 @@ router.route("/signup").post(async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         internshipsDao.addUser(username, hashedPassword);
-        return res.status(200).json({message : "Creating user", id: user._id})
+        return res.status(200).json({message : "Creating user"})
 
     } else{
         console.log("Im in the UserAuthentication else statement")
